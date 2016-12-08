@@ -14,6 +14,7 @@
 		FB53C5641DF9895D004A4965 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB53C5621DF9895D004A4965 /* LaunchScreen.storyboard */; };
 		FB53C56F1DF9895D004A4965 /* VirtualTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB53C56E1DF9895D004A4965 /* VirtualTouristTests.swift */; };
 		FB53C57A1DF9895D004A4965 /* VirtualTouristUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB53C5791DF9895D004A4965 /* VirtualTouristUITests.swift */; };
+		FB53C58C1DF98A6B004A4965 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB53C58B1DF98A6B004A4965 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		FB53C5751DF9895D004A4965 /* VirtualTouristUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtualTouristUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB53C5791DF9895D004A4965 /* VirtualTouristUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualTouristUITests.swift; sourceTree = "<group>"; };
 		FB53C57B1DF9895D004A4965 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB53C58B1DF98A6B004A4965 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +99,13 @@
 		FB53C5581DF9895D004A4965 /* VirtualTourist */ = {
 			isa = PBXGroup;
 			children = (
+				FB53C58B1DF98A6B004A4965 /* CoreDataStack.swift */,
 				FB53C5591DF9895D004A4965 /* AppDelegate.swift */,
 				FB53C55B1DF9895D004A4965 /* ViewController.swift */,
-				FB53C55D1DF9895D004A4965 /* Main.storyboard */,
-				FB53C5601DF9895D004A4965 /* Assets.xcassets */,
-				FB53C5621DF9895D004A4965 /* LaunchScreen.storyboard */,
-				FB53C5651DF9895D004A4965 /* Info.plist */,
+				FB53C5891DF98A08004A4965 /* Controller */,
+				FB53C5881DF989FF004A4965 /* View */,
+				FB53C5871DF989F7004A4965 /* Model */,
+				FB53C58A1DF98A24004A4965 /* Assets */,
 			);
 			path = VirtualTourist;
 			sourceTree = "<group>";
@@ -123,6 +126,38 @@
 				FB53C57B1DF9895D004A4965 /* Info.plist */,
 			);
 			path = VirtualTouristUITests;
+			sourceTree = "<group>";
+		};
+		FB53C5871DF989F7004A4965 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		FB53C5881DF989FF004A4965 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		FB53C5891DF98A08004A4965 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		FB53C58A1DF98A24004A4965 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				FB53C55D1DF9895D004A4965 /* Main.storyboard */,
+				FB53C5601DF9895D004A4965 /* Assets.xcassets */,
+				FB53C5621DF9895D004A4965 /* LaunchScreen.storyboard */,
+				FB53C5651DF9895D004A4965 /* Info.plist */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB53C58C1DF98A6B004A4965 /* CoreDataStack.swift in Sources */,
 				FB53C55C1DF9895D004A4965 /* ViewController.swift in Sources */,
 				FB53C55A1DF9895D004A4965 /* AppDelegate.swift in Sources */,
 			);
