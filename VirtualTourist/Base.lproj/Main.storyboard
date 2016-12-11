@@ -3,10 +3,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Flickr Photo Collection-->
         <scene sceneID="4KT-4v-1Ax">
             <objects>
                 <viewController id="Q6C-Vn-DjT" sceneMemberID="viewController">
@@ -17,12 +18,58 @@
                     <view key="view" contentMode="scaleToFill" id="BrB-9a-Y2p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcN-vP-fah">
+                                <state key="normal" title="Get Photos"/>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-MY-ahZ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="116" id="l9d-eN-meH"/>
+                                </constraints>
+                            </mapView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KAI-A7-ZfX">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zcd-8g-Nmp">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlickrPhotoCollectionCell" id="3LJ-DI-6iu">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="jXm-GS-h4v" secondAttribute="bottom" constant="565" id="29k-Kb-Kbp"/>
+                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="trailing" secondItem="BrB-9a-Y2p" secondAttribute="trailingMargin" id="KGZ-FM-bKF"/>
+                            <constraint firstItem="DcN-vP-fah" firstAttribute="trailing" secondItem="BrB-9a-Y2p" secondAttribute="trailingMargin" id="MUZ-d3-JSY"/>
+                            <constraint firstAttribute="trailing" secondItem="jh3-MY-ahZ" secondAttribute="trailing" id="Uzx-ar-qwh"/>
+                            <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="22" id="V6T-tR-oAH"/>
+                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="Vu9-Ev-Liq"/>
+                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="crN-6D-JfV"/>
+                            <constraint firstItem="zex-kJ-K6N" firstAttribute="top" secondItem="DcN-vP-fah" secondAttribute="bottom" constant="8" id="nQd-ZP-IEJ"/>
+                            <constraint firstItem="DcN-vP-fah" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leadingMargin" id="nmq-sE-vOX"/>
+                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leadingMargin" id="qfX-Th-Rcu"/>
+                            <constraint firstItem="jh3-MY-ahZ" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="reA-l1-R8c"/>
+                            <constraint firstItem="jh3-MY-ahZ" firstAttribute="top" secondItem="jXm-GS-h4v" secondAttribute="bottom" id="yhv-1B-Mb6"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Flickr Photo Collection" id="qhQ-5b-7yi">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="R2y-mN-Snt"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zD1-Ou-vdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2033" y="197"/>
+            <point key="canvasLocation" x="2032.8" y="196.55172413793105"/>
         </scene>
         <!--Virtual Tourist-->
         <scene sceneID="9y1-nw-KU8">
