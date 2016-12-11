@@ -63,9 +63,7 @@
                             <constraint firstItem="jh3-MY-ahZ" firstAttribute="top" secondItem="jXm-GS-h4v" secondAttribute="bottom" id="yhv-1B-Mb6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Flickr Photo Collection" id="qhQ-5b-7yi">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="R2y-mN-Snt"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Flickr Photo Collection" id="qhQ-5b-7yi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zD1-Ou-vdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,6 +92,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Virtual Tourist" id="rHQ-hN-rIz">
+                        <barButtonItem key="backBarButtonItem" title="Back to Pins" id="Tfm-Mh-kcY"/>
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="pLs-sZ-dWd"/>
                     </navigationItem>
                     <connections>

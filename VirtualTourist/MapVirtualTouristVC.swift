@@ -20,6 +20,9 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "seguePhotoViewController" {
+            // back button is set directly in Storyboard 
+           // Link :  http://stackoverflow.com/questions/28471164/how-to-set-back-button-text-in-swift/34268936#34268936
+            
             
             let controller = segue.destination as! PhotoVirtualTouristVC
             //controller.userSelectPin = userSelectPin
