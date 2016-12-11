@@ -12,6 +12,6 @@ import CoreData
 
 class PhotoVirtualTouristVC : UIViewController
 {
-    var userSelectPin
+    //var userSelectPin
     
 }

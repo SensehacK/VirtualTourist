@@ -14,7 +14,7 @@ import MapKit
 class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
 {
     
-    var userSelectPin
+    //var userSelectPin
     
     
     
@@ -22,7 +22,7 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
         if segue.identifier == "seguePhotoViewController" {
             
             let controller = segue.destination as! PhotoVirtualTouristVC
-            controller.userSelectPin = userSelectPin
+            //controller.userSelectPin = userSelectPin
             
         }
     }
