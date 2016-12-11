@@ -10,7 +10,7 @@
         <!--Flickr Photo Collection-->
         <scene sceneID="4KT-4v-1Ax">
             <objects>
-                <viewController id="Q6C-Vn-DjT" sceneMemberID="viewController">
+                <viewController id="Q6C-Vn-DjT" customClass="PhotoVirtualTouristVC" customModule="VirtualTourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jXm-GS-h4v"/>
                         <viewControllerLayoutGuide type="bottom" id="zex-kJ-K6N"/>
@@ -24,7 +24,7 @@
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-MY-ahZ">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="116" id="l9d-eN-meH"/>
+                                    <constraint firstAttribute="height" constant="128" id="l9d-eN-meH"/>
                                 </constraints>
                             </mapView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KAI-A7-ZfX">
@@ -53,7 +53,7 @@
                             <constraint firstItem="KAI-A7-ZfX" firstAttribute="trailing" secondItem="BrB-9a-Y2p" secondAttribute="trailingMargin" id="KGZ-FM-bKF"/>
                             <constraint firstItem="DcN-vP-fah" firstAttribute="trailing" secondItem="BrB-9a-Y2p" secondAttribute="trailingMargin" id="MUZ-d3-JSY"/>
                             <constraint firstAttribute="trailing" secondItem="jh3-MY-ahZ" secondAttribute="trailing" id="Uzx-ar-qwh"/>
-                            <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="22" id="V6T-tR-oAH"/>
+                            <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="8" id="V6T-tR-oAH"/>
                             <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="Vu9-Ev-Liq"/>
                             <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="crN-6D-JfV"/>
                             <constraint firstItem="zex-kJ-K6N" firstAttribute="top" secondItem="DcN-vP-fah" secondAttribute="bottom" constant="8" id="nQd-ZP-IEJ"/>
@@ -64,6 +64,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Flickr Photo Collection" id="qhQ-5b-7yi"/>
+                    <connections>
+                        <outlet property="PhotoVTCollection" destination="KAI-A7-ZfX" id="fr1-zO-Def"/>
+                        <outlet property="PhotoVTMap" destination="jh3-MY-ahZ" id="8P2-t2-XUR"/>
+                        <outlet property="getMorePhotos" destination="DcN-vP-fah" id="Ogp-oj-ROe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zD1-Ou-vdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -72,7 +77,7 @@
         <!--Virtual Tourist-->
         <scene sceneID="9y1-nw-KU8">
             <objects>
-                <viewController id="uWr-8f-DD5" sceneMemberID="viewController">
+                <viewController id="uWr-8f-DD5" customClass="MapVirtualTouristVC" customModule="VirtualTourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6O2-Pg-Og7"/>
                         <viewControllerLayoutGuide type="bottom" id="3Ua-HJ-Mxk"/>
@@ -82,20 +87,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="034-QN-581"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8V-td-oMc">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="3Ua-HJ-Mxk" firstAttribute="top" secondItem="F8V-td-oMc" secondAttribute="bottom" constant="8" id="6ue-EK-1YJ"/>
                             <constraint firstItem="034-QN-581" firstAttribute="top" secondItem="6O2-Pg-Og7" secondAttribute="bottom" constant="38" id="7Eq-5S-ugQ"/>
+                            <constraint firstItem="F8V-td-oMc" firstAttribute="top" secondItem="034-QN-581" secondAttribute="bottom" constant="9" id="FAH-aL-RSv"/>
                             <constraint firstItem="3Ua-HJ-Mxk" firstAttribute="top" secondItem="034-QN-581" secondAttribute="bottom" constant="38" id="bko-G8-xiA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="F8V-td-oMc" secondAttribute="trailing" constant="25" id="il9-cz-N7i"/>
                             <constraint firstItem="034-QN-581" firstAttribute="leading" secondItem="uHU-RV-eHq" secondAttribute="leading" id="mfE-as-nkW"/>
                             <constraint firstAttribute="trailing" secondItem="034-QN-581" secondAttribute="trailing" id="p1c-Gh-CLy"/>
+                            <constraint firstItem="F8V-td-oMc" firstAttribute="leading" secondItem="uHU-RV-eHq" secondAttribute="leadingMargin" id="xQE-Ra-1gC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Virtual Tourist" id="rHQ-hN-rIz">
                         <barButtonItem key="backBarButtonItem" title="Back to Pins" id="Tfm-Mh-kcY"/>
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="pLs-sZ-dWd"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="pLs-sZ-dWd">
+                            <connections>
+                                <action selector="editButtonPressed:" destination="uWr-8f-DD5" id="9sG-33-mPF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="MapVTMapView" destination="034-QN-581" id="fK7-4x-5es"/>
+                        <outlet property="deletionLabel" destination="F8V-td-oMc" id="dSW-D3-JPy"/>
                         <segue destination="Q6C-Vn-DjT" kind="show" identifier="seguePhotoViewController" action="showDetailViewController:sender:" id="PdF-9f-37N"/>
                     </connections>
                 </viewController>

@@ -14,10 +14,31 @@ import MapKit
 class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
 {
     
+    // variables Declared
     //var userSelectPin
     
     
     
+    
+    
+    // IBOutlets
+    @IBOutlet weak var MapVTMapView: MKMapView!
+    
+    @IBOutlet weak var deletionLabel: UILabel!
+    
+    
+    
+    
+    
+    
+    // Edit button Pressed
+    @IBAction func editButtonPressed(_ sender: AnyObject) {
+    }
+    
+    
+    
+    
+    // Segue method
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "seguePhotoViewController" {
             // back button is set directly in Storyboard 
@@ -29,4 +50,9 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
             
         }
     }
+    
+    
+    
+    
+    
 }
