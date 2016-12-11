@@ -15,6 +15,9 @@
 		FB53C56F1DF9895D004A4965 /* VirtualTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB53C56E1DF9895D004A4965 /* VirtualTouristTests.swift */; };
 		FB53C57A1DF9895D004A4965 /* VirtualTouristUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB53C5791DF9895D004A4965 /* VirtualTouristUITests.swift */; };
 		FB53C58C1DF98A6B004A4965 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB53C58B1DF98A6B004A4965 /* CoreDataStack.swift */; };
+		FBB2713D1DFD29C70073C9B4 /* MapVirtualTouristVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB2713C1DFD29C70073C9B4 /* MapVirtualTouristVC.swift */; };
+		FBB2713F1DFD29E10073C9B4 /* PhotoVirtualTouristVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB2713E1DFD29E10073C9B4 /* PhotoVirtualTouristVC.swift */; };
+		FBB271421DFD308C0073C9B4 /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBB271401DFD308C0073C9B4 /* VirtualTourist.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		FB53C5791DF9895D004A4965 /* VirtualTouristUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualTouristUITests.swift; sourceTree = "<group>"; };
 		FB53C57B1DF9895D004A4965 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB53C58B1DF98A6B004A4965 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		FBB2713C1DFD29C70073C9B4 /* MapVirtualTouristVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVirtualTouristVC.swift; sourceTree = "<group>"; };
+		FBB2713E1DFD29E10073C9B4 /* PhotoVirtualTouristVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoVirtualTouristVC.swift; sourceTree = "<group>"; };
+		FBB271411DFD308C0073C9B4 /* VirtualTourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VirtualTourist.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,8 @@
 		FB53C5881DF989FF004A4965 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FBB2713C1DFD29C70073C9B4 /* MapVirtualTouristVC.swift */,
+				FBB2713E1DFD29E10073C9B4 /* PhotoVirtualTouristVC.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -152,6 +160,7 @@
 		FB53C58A1DF98A24004A4965 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				FBB271401DFD308C0073C9B4 /* VirtualTourist.xcdatamodeld */,
 				FB53C55D1DF9895D004A4965 /* Main.storyboard */,
 				FB53C5601DF9895D004A4965 /* Assets.xcassets */,
 				FB53C5621DF9895D004A4965 /* LaunchScreen.storyboard */,
@@ -294,6 +303,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBB2713D1DFD29C70073C9B4 /* MapVirtualTouristVC.swift in Sources */,
+				FBB2713F1DFD29E10073C9B4 /* PhotoVirtualTouristVC.swift in Sources */,
+				FBB271421DFD308C0073C9B4 /* VirtualTourist.xcdatamodeld in Sources */,
 				FB53C58C1DF98A6B004A4965 /* CoreDataStack.swift in Sources */,
 				FB53C55C1DF9895D004A4965 /* ViewController.swift in Sources */,
 				FB53C55A1DF9895D004A4965 /* AppDelegate.swift in Sources */,
@@ -539,6 +551,7 @@
 				FB53C5801DF9895D004A4965 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FB53C5811DF9895D004A4965 /* Build configuration list for PBXNativeTarget "VirtualTouristTests" */ = {
 			isa = XCConfigurationList;
@@ -547,6 +560,7 @@
 				FB53C5831DF9895D004A4965 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FB53C5841DF9895D004A4965 /* Build configuration list for PBXNativeTarget "VirtualTouristUITests" */ = {
 			isa = XCConfigurationList;
@@ -555,8 +569,22 @@
 				FB53C5861DF9895D004A4965 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FBB271401DFD308C0073C9B4 /* VirtualTourist.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FBB271411DFD308C0073C9B4 /* VirtualTourist.xcdatamodel */,
+			);
+			currentVersion = FBB271411DFD308C0073C9B4 /* VirtualTourist.xcdatamodel */;
+			path = VirtualTourist.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FB53C54E1DF9895D004A4965 /* Project object */;
 }
