@@ -18,7 +18,13 @@ class PhotoVirtualTouristVC : UIViewController
     
     @IBOutlet weak var PhotoVTMap: MKMapView!
     @IBOutlet weak var PhotoVTCollection: UICollectionView!
-    @IBOutlet weak var getMorePhotos: UIButton!
+    @IBOutlet weak var getMorePhotosorDeletePhotos: UIButton!
+    
+    
+    
+    
+    
+    
     //var userSelectPin
     
 }

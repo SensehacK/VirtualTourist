@@ -19,15 +19,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcN-vP-fah">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcN-vP-fah" userLabel="Get More Photos or Delete Photos">
+                                <frame key="frameInset" width="1000" height="1000"/>
                                 <state key="normal" title="Get Photos"/>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-MY-ahZ">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-MY-ahZ">
+                                <frame key="frameInset" width="1000" height="1000"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="172" id="RUi-Mn-P1A"/>
                                 </constraints>
                             </mapView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KAI-A7-ZfX">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KAI-A7-ZfX">
+                                <frame key="frameInset" width="1000" height="1000"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="377" id="hxi-Id-o9j"/>
@@ -67,7 +70,7 @@
                     <connections>
                         <outlet property="PhotoVTCollection" destination="KAI-A7-ZfX" id="fr1-zO-Def"/>
                         <outlet property="PhotoVTMap" destination="jh3-MY-ahZ" id="8P2-t2-XUR"/>
-                        <outlet property="getMorePhotos" destination="DcN-vP-fah" id="Ogp-oj-ROe"/>
+                        <outlet property="getMorePhotosorDeletePhotos" destination="DcN-vP-fah" id="yl2-pd-npZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zD1-Ou-vdR" userLabel="First Responder" sceneMemberID="firstResponder"/>

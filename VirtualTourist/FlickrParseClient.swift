@@ -23,6 +23,10 @@ class FlickrParseClient {
     // Used from "Flick Finder" Jarod Udacity, Created by Jarrod Parkes on 11/5/15.
     private func bboxString( latitude : Double , longitude : Double ) -> String {
         
+        // Checking Valid Map Coordinates
+        if(latitude == 0.0 && longitude == 0.0) {
+            return "0,0,0,0"
+        }
         
             let minimumLon = max ( longitude - FlickrConstants.SearchBBoxHalfWidth , FlickrConstants.SearchLonRange.0)
             let minimumLat = max ( latitude - FlickrConstants.SearchBBoxHalfHeight , FlickrConstants.SearchLatRange.0)
@@ -31,9 +35,6 @@ class FlickrParseClient {
 
             return "\(minimumLon) , \(minimumLat) , \(maximumLon) , \(maximumLat) "
         
-        if (latitude == 0.0 && longitude == 0.0) {
-            return "0,0,0,0"
-        }
     }
     
     
