@@ -19,22 +19,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcN-vP-fah" userLabel="Get More Photos or Delete Photos">
-                                <frame key="frameInset" width="1000" height="1000"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcN-vP-fah" userLabel="Get More Photos or Delete Photos">
+                                <color key="backgroundColor" red="0.68159917329687758" green="1" blue="0.54089706004354365" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Get Photos"/>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-MY-ahZ">
-                                <frame key="frameInset" width="1000" height="1000"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-MY-ahZ">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="172" id="RUi-Mn-P1A"/>
+                                    <constraint firstAttribute="height" constant="123" id="12Y-cW-M6g"/>
                                 </constraints>
                             </mapView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KAI-A7-ZfX">
-                                <frame key="frameInset" width="1000" height="1000"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="377" id="hxi-Id-o9j"/>
-                                </constraints>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KAI-A7-ZfX">
+                                <color key="backgroundColor" red="1" green="0.85198447040000003" blue="0.76397017710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zcd-8g-Nmp">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -55,15 +50,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jh3-MY-ahZ" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="4OJ-co-873"/>
-                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" symbolic="YES" id="JLX-da-DxJ"/>
-                            <constraint firstItem="DcN-vP-fah" firstAttribute="centerX" secondItem="KAI-A7-ZfX" secondAttribute="centerX" id="W1o-3f-LLk"/>
-                            <constraint firstItem="jh3-MY-ahZ" firstAttribute="top" secondItem="jXm-GS-h4v" secondAttribute="bottom" id="e7Z-BG-QG1"/>
-                            <constraint firstAttribute="trailing" secondItem="jh3-MY-ahZ" secondAttribute="trailing" id="eU3-v7-Y3B"/>
-                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leadingMargin" constant="-8" id="hwd-zF-wym"/>
-                            <constraint firstItem="DcN-vP-fah" firstAttribute="centerX" secondItem="jh3-MY-ahZ" secondAttribute="centerX" id="jll-et-r8d"/>
-                            <constraint firstItem="DcN-vP-fah" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leadingMargin" id="koG-Kx-ffa"/>
-                            <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="8" symbolic="YES" id="txG-PY-Lqc"/>
+                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leadingMargin" id="5zS-oP-yKE"/>
+                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="7Dc-9M-WuI"/>
+                            <constraint firstItem="zex-kJ-K6N" firstAttribute="top" secondItem="DcN-vP-fah" secondAttribute="bottom" constant="8" id="ASS-wZ-DdA"/>
+                            <constraint firstItem="jh3-MY-ahZ" firstAttribute="top" secondItem="jXm-GS-h4v" secondAttribute="bottom" constant="8" id="Mar-1S-05X"/>
+                            <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="24" id="Ng3-cJ-c45"/>
+                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="trailing" secondItem="BrB-9a-Y2p" secondAttribute="trailingMargin" id="Taq-kz-xN3"/>
+                            <constraint firstAttribute="trailing" secondItem="DcN-vP-fah" secondAttribute="trailing" id="Xcj-9y-8Dt"/>
+                            <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="24" id="ezW-ZX-6Lr"/>
+                            <constraint firstAttribute="trailing" secondItem="jh3-MY-ahZ" secondAttribute="trailing" id="fhq-Ah-YPP"/>
+                            <constraint firstItem="jh3-MY-ahZ" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="iXt-pe-H5s"/>
+                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="sHx-XS-DGk"/>
+                            <constraint firstItem="DcN-vP-fah" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="wXG-cS-p9W"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Flickr Photo Collection" id="qhQ-5b-7yi"/>
@@ -75,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zD1-Ou-vdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2032.8" y="196.55172413793105"/>
+            <point key="canvasLocation" x="2032.5" y="196.5"/>
         </scene>
         <!--Virtual Tourist-->
         <scene sceneID="9y1-nw-KU8">
