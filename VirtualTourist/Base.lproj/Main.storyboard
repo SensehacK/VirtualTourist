@@ -24,11 +24,14 @@
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-MY-ahZ">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="l9d-eN-meH"/>
+                                    <constraint firstAttribute="height" constant="172" id="RUi-Mn-P1A"/>
                                 </constraints>
                             </mapView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KAI-A7-ZfX">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="377" id="hxi-Id-o9j"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zcd-8g-Nmp">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -49,18 +52,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="jXm-GS-h4v" secondAttribute="bottom" constant="565" id="29k-Kb-Kbp"/>
-                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="trailing" secondItem="BrB-9a-Y2p" secondAttribute="trailingMargin" id="KGZ-FM-bKF"/>
-                            <constraint firstItem="DcN-vP-fah" firstAttribute="trailing" secondItem="BrB-9a-Y2p" secondAttribute="trailingMargin" id="MUZ-d3-JSY"/>
-                            <constraint firstAttribute="trailing" secondItem="jh3-MY-ahZ" secondAttribute="trailing" id="Uzx-ar-qwh"/>
-                            <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="8" id="V6T-tR-oAH"/>
-                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="Vu9-Ev-Liq"/>
-                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="crN-6D-JfV"/>
-                            <constraint firstItem="zex-kJ-K6N" firstAttribute="top" secondItem="DcN-vP-fah" secondAttribute="bottom" constant="8" id="nQd-ZP-IEJ"/>
-                            <constraint firstItem="DcN-vP-fah" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leadingMargin" id="nmq-sE-vOX"/>
-                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leadingMargin" id="qfX-Th-Rcu"/>
-                            <constraint firstItem="jh3-MY-ahZ" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="reA-l1-R8c"/>
-                            <constraint firstItem="jh3-MY-ahZ" firstAttribute="top" secondItem="jXm-GS-h4v" secondAttribute="bottom" id="yhv-1B-Mb6"/>
+                            <constraint firstItem="jh3-MY-ahZ" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="4OJ-co-873"/>
+                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" symbolic="YES" id="JLX-da-DxJ"/>
+                            <constraint firstItem="DcN-vP-fah" firstAttribute="centerX" secondItem="KAI-A7-ZfX" secondAttribute="centerX" id="W1o-3f-LLk"/>
+                            <constraint firstItem="jh3-MY-ahZ" firstAttribute="top" secondItem="jXm-GS-h4v" secondAttribute="bottom" id="e7Z-BG-QG1"/>
+                            <constraint firstAttribute="trailing" secondItem="jh3-MY-ahZ" secondAttribute="trailing" id="eU3-v7-Y3B"/>
+                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leadingMargin" constant="-8" id="hwd-zF-wym"/>
+                            <constraint firstItem="DcN-vP-fah" firstAttribute="centerX" secondItem="jh3-MY-ahZ" secondAttribute="centerX" id="jll-et-r8d"/>
+                            <constraint firstItem="DcN-vP-fah" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leadingMargin" id="koG-Kx-ffa"/>
+                            <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="8" symbolic="YES" id="txG-PY-Lqc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Flickr Photo Collection" id="qhQ-5b-7yi"/>
