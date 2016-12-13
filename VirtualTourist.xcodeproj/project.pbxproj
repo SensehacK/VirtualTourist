@@ -119,12 +119,12 @@
 		FB53C5581DF9895D004A4965 /* VirtualTourist */ = {
 			isa = PBXGroup;
 			children = (
-				FBB271431DFD33310073C9B4 /* Flickr */,
 				FB53C5591DF9895D004A4965 /* AppDelegate.swift */,
 				FB53C55B1DF9895D004A4965 /* ViewController.swift */,
-				FB53C5891DF98A08004A4965 /* Controller */,
+				FBB271431DFD33310073C9B4 /* Flickr */,
 				FB53C5881DF989FF004A4965 /* View */,
 				FB53C5871DF989F7004A4965 /* Model */,
+				FB53C5891DF98A08004A4965 /* Controller */,
 				FB53C58A1DF98A24004A4965 /* Assets */,
 			);
 			path = VirtualTourist;

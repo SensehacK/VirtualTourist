@@ -38,6 +38,53 @@ class FlickrParseClient {
     }
     
     
+    // function for initializing session task.
+    func initTask(request : URLRequest , completionHandlerForTask : @escaping (_ result : AnyObject? , _ error : Error?)-> URLSessionDataTask) {
+        
+        let task = URLSession.shared.dataTask(with: request) {
+            data , response , error in
+            
+            // guard statements incoming 
+            
+            guard let data = data else {
+                print("Data not present,")
+                //Debug print
+                print("Error in InitTask Guard Statement")
+
+                return
+            }
+            
+            guard error == nil else {
+                print("error present")
+                //Debug print
+                print("Error in InitTask Guard Statement")
+                return
+            }
+            // Status code msgs
+            guard let statusCodes = (response as? HTTPURLResponse)?.statusCode , statusCodes >= 200 && statusCodes <= 299 else {
+                print("Wrong status codes returned")
+                return
+            }
+            
+            var parsedResult : Any!
+            
+            do {
+           parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            } catch {
+                print(" Catched Error in JSON serialization Json Object creation")
+                
+            }
+            
+            completionHandlerForTask(parsedResult as AnyObject, nil)
+            
+        }
+        
+        task.resume()
+         // Gets Non void error for returning task
+        //return task
+        
+        
+    }
     
     
     
@@ -78,7 +125,7 @@ class FlickrParseClient {
     }
     
     
-    //
+
     
     
     
