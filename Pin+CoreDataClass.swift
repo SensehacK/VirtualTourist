@@ -10,18 +10,19 @@ import Foundation
 import CoreData
 import MapKit
 
-public class Pin: NSManagedObject {
+// Added MKAnnotation subclass to Pin for adding MapKits Annotations directly
+public class Pin: NSManagedObject , MKAnnotation {
 
     
     
-    public var coordinateValues: CLLocationCoordinate2D {
+    public var coordinate: CLLocationCoordinate2D {
         
         get {
             return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         }
         
         set(coordinate){
-            self.coordinateValues = coordinate
+            self.coordinate = coordinate
         }
     }
     

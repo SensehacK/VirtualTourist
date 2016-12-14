@@ -63,7 +63,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-MY-ahZ">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-MY-ahZ">
+                                <frame key="frameInset" width="1000" height="1000"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="139" id="12Y-cW-M6g"/>
                                 </constraints>
@@ -123,6 +124,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="034-QN-581"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="scB-4V-njo">
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Satellite"/>
+                                    <segment title="Hybrid"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentMapAction:" destination="uWr-8f-DD5" eventType="valueChanged" id="DdQ-wn-Z5b"/>
+                                </connections>
+                            </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8V-td-oMc">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -133,12 +144,16 @@
                         <constraints>
                             <constraint firstItem="3Ua-HJ-Mxk" firstAttribute="top" secondItem="F8V-td-oMc" secondAttribute="bottom" constant="8" id="6ue-EK-1YJ"/>
                             <constraint firstItem="034-QN-581" firstAttribute="top" secondItem="6O2-Pg-Og7" secondAttribute="bottom" constant="38" id="7Eq-5S-ugQ"/>
+                            <constraint firstItem="scB-4V-njo" firstAttribute="top" secondItem="6O2-Pg-Og7" secondAttribute="bottom" constant="537" id="A3S-6u-FOa"/>
                             <constraint firstItem="F8V-td-oMc" firstAttribute="top" secondItem="034-QN-581" secondAttribute="bottom" constant="9" id="FAH-aL-RSv"/>
+                            <constraint firstItem="F8V-td-oMc" firstAttribute="top" secondItem="scB-4V-njo" secondAttribute="bottom" constant="9" id="JQH-SX-pyq"/>
                             <constraint firstItem="3Ua-HJ-Mxk" firstAttribute="top" secondItem="034-QN-581" secondAttribute="bottom" constant="38" id="bko-G8-xiA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="F8V-td-oMc" secondAttribute="trailing" constant="25" id="il9-cz-N7i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="F8V-td-oMc" secondAttribute="trailing" constant="13" id="il9-cz-N7i"/>
                             <constraint firstItem="034-QN-581" firstAttribute="leading" secondItem="uHU-RV-eHq" secondAttribute="leading" id="mfE-as-nkW"/>
                             <constraint firstAttribute="trailing" secondItem="034-QN-581" secondAttribute="trailing" id="p1c-Gh-CLy"/>
-                            <constraint firstItem="F8V-td-oMc" firstAttribute="leading" secondItem="uHU-RV-eHq" secondAttribute="leadingMargin" id="xQE-Ra-1gC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="scB-4V-njo" secondAttribute="trailing" constant="45" id="v9o-YV-NNE"/>
+                            <constraint firstItem="scB-4V-njo" firstAttribute="leading" secondItem="uHU-RV-eHq" secondAttribute="leadingMargin" constant="62" id="wFG-Zp-hzR"/>
+                            <constraint firstItem="F8V-td-oMc" firstAttribute="leading" secondItem="uHU-RV-eHq" secondAttribute="leadingMargin" constant="12" id="xQE-Ra-1gC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Virtual Tourist" id="rHQ-hN-rIz">
@@ -157,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ktv-UA-yP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="936.79999999999995" y="196.55172413793105"/>
+            <point key="canvasLocation" x="936.5" y="196.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="10A-37-ZIP">

@@ -20,7 +20,7 @@ class FlickrParseClient {
 
     
     
-    // Used from "Flick Finder" Jarod Udacity, Created by Jarrod Parkes on 11/5/15.
+    // Reference : Used from "Flick Finder" Jarod Udacity, Created by Jarrod Parkes on 11/5/15.
      func bboxString( latitude : Double , longitude : Double ) -> String {
         
         // Checking Valid Map Coordinates
