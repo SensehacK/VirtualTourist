@@ -14,6 +14,7 @@ import CoreData
 class PhotoVirtualTouristVC : UIViewController
 {
     
+    
     // IBOutlets Connections
     
     @IBOutlet weak var PhotoVTMap: MKMapView!
@@ -25,7 +26,7 @@ class PhotoVirtualTouristVC : UIViewController
     
     
     
-    //var userSelectPin
+    var mapSegueSelectedPin : Pin!
     
     
     

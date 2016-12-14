@@ -167,6 +167,7 @@
                     <connections>
                         <outlet property="MapVTMapView" destination="034-QN-581" id="fK7-4x-5es"/>
                         <outlet property="deletionLabel" destination="F8V-td-oMc" id="dSW-D3-JPy"/>
+                        <outlet property="editButton" destination="pLs-sZ-dWd" id="HUm-9p-fXI"/>
                         <segue destination="Q6C-Vn-DjT" kind="show" identifier="seguePhotoViewController" action="showDetailViewController:sender:" id="PdF-9f-37N"/>
                     </connections>
                 </viewController>

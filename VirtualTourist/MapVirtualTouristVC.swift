@@ -28,9 +28,11 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
     
     @IBOutlet weak var deletionLabel: UILabel!
     
+    @IBOutlet weak var editButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Calls to delegate Self
         MapVTMapView.delegate = self
         
@@ -69,47 +71,99 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
 
     
     
-    // Adds Pin when user holds the touch Gesture for more than 1.2 secs.
-    
-    func addUserPin(gesture : UIGestureRecognizer) {
-        if gesture.state == UIGestureRecognizerState.began {
-            print("input Gesture received")
-            
-            
-        }
-    }
-    
-    
-    //Retrieves Core Data Pins stored from the User Data.
-    func getStoredPins() {
-        
-    }
-    
-    
-    
     // Edit button Pressed
     @IBAction func editButtonPressed(_ sender: AnyObject) {
+        // First Execution will happen in else statement , as "isEditingMode" Default value set is "False"
+        
+        // After pressing Done on Edit Button
+        
         if isEditingMode {
             isEditingMode = false
+            editButton.title = "Edit"
+            deletionLabel.isHidden = true
             
             
+            // Save after user pressed "Done" with the Pins
+            CoreDataStack.sharedInstance().saveContext()
+            //Debug Print
+            print("User Pins saved after deletion")
             
+        }
+            //Default Execution
+        else {
+            isEditingMode = true
+            editButton.title = "Done"
+            deletionLabel.isHidden = false
+            
+        }
+        
+        
+    }
+
+    //MARK: Incomplete
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        // Debug Print
+        print(" In Function Map View Delegate did select")
+        if isEditingMode {
             
         }
         else {
             
-            
-            
-            
-            
         }
-        
-        
     }
     
     
+    // Adds Pin when user holds the touch Gesture for more than 1.2 secs.
+    //MARK: Incomplete
+    func addUserPin(gesture : UIGestureRecognizer) {
+        if gesture.state == UIGestureRecognizerState.began {
+            print("input Gesture received")
+            
+            let touch = gesture.location(in: MapVTMapView)
+            let convertedCoordinates = MapVTMapView.convert(touch, toCoordinateFrom: MapVTMapView)
+            
+            // Update the View with Pin
+            
+            // get Pin context & update Object
+            let newPin  = Pin(context: CoreDataStack.sharedInstance().persistentContainer.viewContext)
+            newPin.latitude = convertedCoordinates.latitude
+            newPin.longitude = convertedCoordinates.longitude
+            
+            MapVTMapView.addAnnotation(newPin)
+            
+            // Get Flickr Photos for that Pin
+            FlickrParseClient.sharedInstance().parsePhotoURLFromFlickrJSON(pin: newPin, managedcontext: CoreDataStack.sharedInstance().persistentContainer.viewContext)
+            
+            
+            // Save Pin to Core Data 
+            
+            do {
+                try CoreDataStack.sharedInstance().persistentContainer.viewContext.save()
+            }
+            catch {
+                print("Couldnt save Pin to Core Data")
+                // Debug text 
+                print("func addUserPin in MapVTVC Couldn't save")
+            }
+            
+        }
+    } //  func addUserPin Ends
     
     
+    
+
+    
+    //Retrieves Core Data Pins stored from the User Data.
+    func getStoredPins() {
+        
+        do {
+            userPins = try CoreDataStack.sharedInstance().persistentContainer.viewContext.fetch(Pin.fetchRequest())
+        } catch {
+            print("Couldn't fetch the user Stored Pins from Core Data")
+        }
+        
+    }
     
     
     
@@ -121,8 +175,8 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
             
             
             
-            //let controller = segue.destination as! PhotoVirtualTouristVC
-            //controller.userSelectPin = userSelectPin
+            let controller = segue.destination as! PhotoVirtualTouristVC
+            controller.mapSegueSelectedPin = userSelectedPin
             
         }
  

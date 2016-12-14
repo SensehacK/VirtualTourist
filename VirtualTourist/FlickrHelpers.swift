@@ -23,7 +23,7 @@ extension FlickrParseClient {
         let flickrParameters : [String : String?] = [
             FlickrConstants.ParameterKeys.Method : FlickrConstants.ParameterValues.SearchMethod,
             FlickrConstants.ParameterKeys.APIKey : FlickrConstants.ParameterValues.APIKey,
-            FlickrConstants.ParameterKeys.BBOX : FlickrParseClient.sharedInstance().bboxString(latitude: selectedPin.coordinateValues.latitude, longitude: selectedPin.coordinateValues.longitude),
+            FlickrConstants.ParameterKeys.BBOX : FlickrParseClient.sharedInstance().bboxString(latitude: selectedPin.coordinate.latitude, longitude: selectedPin.coordinate.longitude),
             FlickrConstants.ParameterKeys.SearchType : FlickrConstants.ParameterValues.SafeSearch,
             FlickrConstants.ParameterKeys.Extras : FlickrConstants.ParameterValues.MediumURL,
             FlickrConstants.ParameterKeys.Format : FlickrConstants.ParameterValues.JSONFormat,
