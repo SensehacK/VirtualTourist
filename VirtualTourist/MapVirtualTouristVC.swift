@@ -49,7 +49,8 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
             //controller.userSelectPin = userSelectPin
             
         }
-    }
+ 
+    } // segue end
     
     
     

@@ -38,8 +38,47 @@ class FlickrParseClient {
     }
     
     
+    // Build URL & return the request.
+    
+    func getBuildURL(parameters : [String:AnyObject]) -> URLRequest {
+        
+        // Building URL Components
+        var components = URLComponents()
+        components.scheme = FlickrConstants.APIScheme
+        components.host   = FlickrConstants.APIHost
+        components.path   = FlickrConstants.APIPath
+        
+        components.queryItems = [URLQueryItem]()
+        
+        for (keys , values) in parameters {
+            let queryItem = URLQueryItem(name: keys, value: values as? String)
+            components.queryItems?.append(queryItem)
+        }
+        
+        if  components.url == nil
+        {
+            print("Error in URL Creation")
+        }
+        
+        guard let urlrequested = components.url else {
+            print("Error in URL Creation")
+            let url2 = NSURL(string: "https://www.flickr.com/photos/flickr/30709520093/in/feed")
+            let url = URLRequest.init(url: url2 as! URL)
+            return url
+        }
+        
+        
+        let request = URLRequest(url: urlrequested)
+        return request
+        
+        
+    }
+
+    
+    
+    
     // function for initializing session task.
-    func initTask(request : URLRequest , completionHandlerForTask : @escaping (_ result : AnyObject? , _ error : Error?)-> URLSessionDataTask) {
+    func initTask(request : URLRequest , completionHandlerForTask : @escaping (_ result : AnyObject? , _ error : Error?)->Void)-> URLSessionDataTask {
         
         let task = URLSession.shared.dataTask(with: request) {
             data , response , error in
@@ -81,48 +120,13 @@ class FlickrParseClient {
         
         task.resume()
          // Gets Non void error for returning task
-        //return task
+        return task
         
         
     }
     
     
     
-    // Build URL & return the request.
-    
-    func getBuildURL(parameters : [String:AnyObject]) -> URLRequest {
-        
-        // Building URL Components
-        var components = URLComponents()
-        components.scheme = FlickrConstants.APIScheme
-        components.host   = FlickrConstants.APIHost
-        components.path   = FlickrConstants.APIPath
-        
-        components.queryItems = [URLQueryItem]()
-        
-        for (keys , values) in parameters {
-            let queryItem = URLQueryItem(name: keys, value: values as? String)
-            components.queryItems?.append(queryItem)
-        }
-        
-        if  components.url == nil
-        {
-            print("Error in URL Creation")
-        }
-        
-        guard let urlrequested = components.url else {
-            print("Error in URL Creation")
-            let url2 = NSURL(string: "https://www.flickr.com/photos/flickr/30709520093/in/feed")
-            let url = URLRequest.init(url: url2 as! URL)
-            return url
-        }
-        
-        
-        let request = URLRequest(url: urlrequested)
-        return request
-        
-        
-    }
     
     
 

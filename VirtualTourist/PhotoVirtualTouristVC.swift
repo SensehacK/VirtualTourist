@@ -27,4 +27,6 @@ class PhotoVirtualTouristVC : UIViewController
     
     //var userSelectPin
     
+    
+    
 }

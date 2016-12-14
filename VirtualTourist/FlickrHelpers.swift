@@ -53,16 +53,16 @@ extension FlickrParseClient {
             }
             
         
-            
-        
-        
-        
+         
         
         
         })
         task.resume()
         
         */
+        
+        // No Abstraction
+        
         
         let task2 = URLSession.shared.dataTask(with: getRequestSetup) {
             data , response , error in
@@ -94,6 +94,7 @@ extension FlickrParseClient {
             do {
                 parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:AnyObject]
                 
+               
                 
             } catch {
                 print(" Catched Error in JSON serialization Json Object creation")
@@ -112,11 +113,14 @@ extension FlickrParseClient {
                 print("photosarray is empty.")
                 return
             }
-
             
-            for index in 0...(photosArray.count-1){
+            //Create the photoarraycount variable for easily traversing through the array index & print it.
+            let photosArrayCount = photosArray.count-1
+            print(photosArrayCount)
+            
+            for photoindex in 0...photosArrayCount {
                 
-                let photoDictionary = photosArray[index] as [String:AnyObject]
+                let photoDictionary = photosArray[photoindex] as [String:AnyObject]
                 
                 guard let imageURLString = photoDictionary[FlickrConstants.ResponseKeys.MediumURL] as? String else {
                     print("Unable to locate image URL in photo dictionary")
@@ -124,15 +128,19 @@ extension FlickrParseClient {
                 }
                 
                 // asynchronously run same thread
-                coreDataContext.perform{
+                coreDataContext.perform {
+                    
                     // Create a photo object
                     let photo = Photo(context: coreDataContext)
+                    
+                    //Debug Image URL Prints 
+                    print(imageURLString)
                     
                     // Save the  url
                     photo.url = imageURLString
                     
-                    // Save the  index
-                    photo.index = index + 1
+                    // Save the  photoindex
+                    photo.index = photoindex + 1
                     
                     // Make Bool isinAlbum = false
                     photo.isInAlbum = false
@@ -142,33 +150,24 @@ extension FlickrParseClient {
                 }
                 
             }
+            
+            
+           // end of the photo passing loop creation
+          print("PhotoIndex Completed parsing through PhotoArraycount")
 
             
         
-        }
+        } // End of Task2
         
         
         
         task2.resume()
         
         
-    }
+    } // End of Function parsePhotoURLFromFlickrJSON
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     //Convert Flickr URLs to  Image Data.
     func getImageDataFlickrURL (urlString : String) -> Data? {
