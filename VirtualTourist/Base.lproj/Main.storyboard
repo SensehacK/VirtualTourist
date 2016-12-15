@@ -63,21 +63,18 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-MY-ahZ">
-                                <frame key="frameInset" width="1000" height="1000"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-MY-ahZ">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="139" id="12Y-cW-M6g"/>
+                                    <constraint firstAttribute="height" constant="147" id="jOa-Hl-NNJ"/>
                                 </constraints>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KAI-A7-ZfX" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leadingMargin" constant="-16" id="5zS-oP-yKE"/>
-                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="7Dc-9M-WuI"/>
                             <constraint firstItem="zex-kJ-K6N" firstAttribute="top" secondItem="DcN-vP-fah" secondAttribute="bottom" constant="8" id="ASS-wZ-DdA"/>
-                            <constraint firstItem="jh3-MY-ahZ" firstAttribute="top" secondItem="jXm-GS-h4v" secondAttribute="bottom" constant="8" id="BIh-sx-Las"/>
                             <constraint firstAttribute="trailing" secondItem="KAI-A7-ZfX" secondAttribute="trailing" id="MMR-cU-NNh"/>
-                            <constraint firstItem="jh3-MY-ahZ" firstAttribute="top" secondItem="jXm-GS-h4v" secondAttribute="bottom" constant="8" id="Mar-1S-05X"/>
+                            <constraint firstItem="jh3-MY-ahZ" firstAttribute="top" secondItem="jXm-GS-h4v" secondAttribute="bottom" id="Mar-1S-05X"/>
                             <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="8" id="Ng3-cJ-c45"/>
                             <constraint firstItem="zex-kJ-K6N" firstAttribute="top" secondItem="DcN-vP-fah" secondAttribute="bottom" constant="8" id="Qmy-w7-lLr"/>
                             <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="Rf7-pF-nrr"/>
@@ -87,12 +84,14 @@
                             <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="8" id="ezW-ZX-6Lr"/>
                             <constraint firstAttribute="trailing" secondItem="jh3-MY-ahZ" secondAttribute="trailing" id="fhq-Ah-YPP"/>
                             <constraint firstItem="jh3-MY-ahZ" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="iXt-pe-H5s"/>
+                            <constraint firstAttribute="trailing" secondItem="jh3-MY-ahZ" secondAttribute="trailing" id="ila-l3-rbo"/>
+                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="lHB-NL-doJ"/>
                             <constraint firstAttribute="trailing" secondItem="DcN-vP-fah" secondAttribute="trailing" id="nw1-Ky-fVg"/>
+                            <constraint firstItem="jh3-MY-ahZ" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="pQn-pd-exT"/>
                             <constraint firstItem="jh3-MY-ahZ" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="rHl-fQ-6Oc"/>
                             <constraint firstItem="KAI-A7-ZfX" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="rUb-iO-Y2g"/>
                             <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="8" id="rxl-wR-4il"/>
                             <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="sHx-XS-DGk"/>
-                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jXm-GS-h4v" secondAttribute="bottom" constant="155" id="tLj-B5-HTF"/>
                             <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="8" id="txz-fr-qLu"/>
                             <constraint firstItem="DcN-vP-fah" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="wXG-cS-p9W"/>
                             <constraint firstItem="DcN-vP-fah" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="xYq-u4-8dG"/>
