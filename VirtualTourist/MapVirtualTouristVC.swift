@@ -39,7 +39,7 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
         //Step 1 Get user core data stored Pins
         getStoredPins()
         
-        // Display user Pins from Step 1.
+        // Step 2 Display user Pins from Step 1.
         MapVTMapView.addAnnotations(userPins)
         
         // add the Touch to create pin Map Annotation
@@ -105,11 +105,61 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
         
         // Debug Print
         print(" In Function Map View Delegate did select")
-        if isEditingMode {
-            
+        
+        let mapPinFetch: NSFetchRequest<Pin> = Pin.fetchRequest()
+        
+        
+       //  Core Data Double stores too much high precision in .000000000000 Values. We can remove that much precision & only use till .00001
+        let precision = 0.00001
+        
+        let lowerBLatitude  = (view.annotation?.coordinate.latitude)! - precision
+        let lowerBLongitude = (view.annotation?.coordinate.longitude)! - precision
+        let upperBLatitude  = (view.annotation?.coordinate.latitude)! + precision
+        let upperBLongitude  = (view.annotation?.coordinate.longitude)! + precision
+        
+        //NS Predicate Syntax for getting the pins on Latitude & longitude respectively
+        mapPinFetch.predicate = NSPredicate(format: "(%K BETWEEN {\(lowerBLatitude) , \(upperBLatitude)}) AND (%K BETWEEN {\(lowerBLongitude), \(upperBLongitude) })", #keyPath(Pin.latitude) , #keyPath(Pin.longitude) )
+        
+        var resultsPins : [Pin] = []
+        
+        do {
+          resultsPins =  try CoreDataStack.sharedInstance().persistentContainer.viewContext.fetch(mapPinFetch)
+        } catch {
+            print("Couldn't get the results Pins via NSPRedicate")
         }
+        
+        
+        
+        if isEditingMode {
+            // Run the results Pins Variable after fetching via NSPRedicate
+            
+            // Edit Button has pressed & IBAction set bool "isEditingMode" = true
+            if resultsPins.count > 0 {
+                
+                
+                // Remove Map Annotations of Pins
+              mapView.removeAnnotation(resultsPins.first!)
+                print("Pin removed from MapView")
+                
+                // Delete from CoreData 
+                CoreDataStack.sharedInstance().persistentContainer.viewContext.delete(resultsPins.first!)
+                print("Pin deleted from Core Data")
+                
+            }
+            else {
+                print("Couldn't fetch pins to delete")
+                
+            }
+        }
+            // Edit Button hasn't been pressed & IBAction set bool "isEditingMode" = false (Default)
+            //Default Execution
         else {
             
+            if resultsPins.count > 0 {
+                userSelectedPin = resultsPins.first
+            } else {
+                print("Unable to find any Pins from Core data")
+            }
         }
     }
     
