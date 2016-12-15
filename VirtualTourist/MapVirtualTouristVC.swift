@@ -118,6 +118,7 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
         let upperBLongitude  = (view.annotation?.coordinate.longitude)! + precision
         
         //NS Predicate Syntax for getting the pins on Latitude & longitude respectively
+        // Took help for NSPRedicate Syntax from http://nshipster.com/nspredicate/ , https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html
         mapPinFetch.predicate = NSPredicate(format: "(%K BETWEEN {\(lowerBLatitude) , \(upperBLatitude)}) AND (%K BETWEEN {\(lowerBLongitude), \(upperBLongitude) })", #keyPath(Pin.latitude) , #keyPath(Pin.longitude) )
         
         var resultsPins : [Pin] = []
@@ -180,6 +181,7 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
             newPin.latitude = convertedCoordinates.latitude
             newPin.longitude = convertedCoordinates.longitude
             
+           // MKAnnotation  http://stackoverflow.com/a/7213540/5177704
             MapVTMapView.addAnnotation(newPin)
             
             // Get Flickr Photos for that Pin

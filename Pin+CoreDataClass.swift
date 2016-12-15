@@ -14,7 +14,8 @@ import MapKit
 public class Pin: NSManagedObject , MKAnnotation {
 
     
-    
+   // MK Annotation  http://stackoverflow.com/a/7213540/5177704
+   // https://developer.apple.com/reference/mapkit/mkannotation An object that adopts this protocol must implement the coordinate property. The other methods of this protocol are optional.
     public var coordinate: CLLocationCoordinate2D {
         
         get {
