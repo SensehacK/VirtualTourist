@@ -2,9 +2,10 @@
 //  CoreDataStack.swift
 //
 //
-//  Created by Fernando Rodríguez Romero on 21/02/16.
-//  Copyright © 2016 udacity.com. All rights reserved.
-//
+//  Created by Sensehack on 14/12/16.
+//  Copyright © 2016 Sensehack. All rights reserved.
+
+
 
 import CoreData
 
@@ -77,6 +78,9 @@ class CoreDataStack {
     
     
 
+    
+    //  Created by Fernando Rodríguez Romero on 21/02/16.
+    //  Copyright © 2016 udacity.com. All rights reserved.
     /*
     
     // MARK: Properties

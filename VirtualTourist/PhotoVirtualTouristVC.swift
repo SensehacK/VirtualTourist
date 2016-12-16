@@ -41,7 +41,7 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
     
     //Default View Active is set false , Set to true in View Did Load. Easier to track view Active when going in Background or View will Disappear.
     var isPhotoViewActive : Bool = false
-    
+    var randomPhoto : Int!
     
     //MARK: View DidLoad
     override func viewDidLoad() {
@@ -64,7 +64,7 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         selectedPinPhotos = Array(mapSegueSelectedPin!.photos!) as! [Photo]
         
         //Random Photo number generated from selected Pin Photos
-        let randomPhoto = Int(arc4random_uniform(UInt32(selectedPinPhotos.count)))
+        randomPhoto = Int(arc4random_uniform(UInt32(selectedPinPhotos.count)))
         
         
         // check Photos boolean property whether it is located in Collection View "isInAlbum" Default is False when they are been created.
@@ -142,6 +142,107 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
     
     
     
+    @IBAction func getNewPhotosOrDelete(_ sender: AnyObject) {
+        //Check whether Photos to be deleted or not
+        
+        
+        if photosDeleted.isEmpty {
+            //New collection Button , No photos to be deleted
+            
+            //Falsify Boolean value of "isInAlbum" for Photos
+            for p in selectedPinPhotos {
+                p.isInAlbum = false
+            }
+            
+            //Remove old photos as new photos are being retrieved. To delete old photos call the function itself.
+            
+            photosDeleted = collectionViewPhoto
+            if selectedPinPhotos.count > 0 {
+                getNewPhotosOrDelete(sender)
+                
+            }
+            else {
+                showAlert(message: "No Photos to get from this pin")
+            }
+            
+            
+            // Get random photos from remaining Photos Pins
+            
+            var storedPhotos :[Photo] = []
+            
+            // if photos of selected pin retrieve are less than 21 then return all photos of Selected Pin to the collectionView Photo display grid
+            if selectedPinPhotos.count <= 21 {
+                collectionViewPhoto = selectedPinPhotos
+            }
+                // else randomly select photos from 21 using arc4random_uniform
+            else {
+                for _ in 1...21 {
+                    
+                    let arcRandomIndex = Int(arc4random_uniform(UInt32(selectedPinPhotos.count)))
+                    storedPhotos.append(selectedPinPhotos[arcRandomIndex])
+                    //Debug print
+                    print("Random Index: \(arcRandomIndex)")
+                    
+                    //  Change selectedPin photo property "isInAlbum" = true
+                    selectedPinPhotos[arcRandomIndex].isInAlbum = true
+                    
+                }
+            }
+            
+            // Saved the random photos in Collection View Photo Array to display it.
+            collectionViewPhoto = storedPhotos
+            
+            // Reload the Collection View
+            PhotoVTCollection.reloadData()
+        }
+        else {
+            // Delete selectedPhoto specific of Collection view delegate , did select at returning specific photos to be delete , stored in PhotosDeleted.
+            
+            //filter out the soon to be deleted photos from the main context & resave it. Collection View Display Photos Filter
+            collectionViewPhoto = collectionViewPhoto.filter{!photosDeleted.contains($0)}
+            
+            //filter out the soon to be deleted photos from the main context & resave it. UserSelectedPinPhotos Display Photos Filter
+            
+            selectedPinPhotos = selectedPinPhotos.filter{!photosDeleted.contains($0)}
+            
+            // Update the random variable with updated photos remaining
+            randomPhoto = Int(arc4random_uniform(UInt32(selectedPinPhotos.count)))
+            
+            
+            // delete from Core data
+            for p in photosDeleted {
+               CoreDataStack.sharedInstance().persistentContainer.viewContext.delete(p)
+            }
+            
+            // Save to core data
+            
+            do {
+                try CoreDataStack.sharedInstance().persistentContainer.viewContext.save()
+            } catch {
+                print("Couldn't save the deleted items removed in Core data")
+            }
+            
+            let photosDeletedCount = photosDeleted.count
+            
+            showAlert(message: "\(photosDeletedCount) photos were deleted ")
+            
+            // Small changes after Deletion
+            
+            // Clear the array
+            photosDeleted = []
+            
+            //Set the text
+            getMorePhotosorDeletePhotos.setTitle("Get More Photos", for: .normal)
+            
+            // Reload data 
+            PhotoVTCollection.reloadData()
+            
+            
+            
+        }
+        
+        
+    }
     
     
     
@@ -269,8 +370,6 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
 
             } // DispatchQueue.global(qos: .userInitiated).sync End
             
-            
-            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
             
             
@@ -280,27 +379,19 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             
             }) // DispatchQueue.main.asyncAfter(deadline: .now() end
             
-            
-            
-            
-
-            
+    
         }
         // In Core Data Objects
         else {
             let corePhotoData = UIImage(data: collectionViewPhoto[indexPath.row].image as! Data)
             
             // Stop Animation of loading activity
-            
             cell.activityIndicatorInCell.stopAnimating()
             
             // Display the Photo Image Data on Photo Cell VT image
-            
             cell.imageViewCell.image = corePhotoData
             
-            
         }
-        
         
     }
     
