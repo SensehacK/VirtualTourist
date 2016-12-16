@@ -147,30 +147,78 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
     
     
     
+    //MARK: Collection View Delegate & DataSource
+    
+    //MARK: viewDidLayoutSubviews
+    /*
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+    }
+    */
+    
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       return collectionViewPhoto.count
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FlickrPhotoCollectionCell", for: indexPath) as! PhotoCellVT
+        
+        return cell
+        
+    }
     
     
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! PhotoCellVT
+        
+        
+        //debug print 
+        print("In collectionView function ,'Did select Item At'")
+        if photosDeleted.contains(collectionViewPhoto[indexPath.row]) {
+            
+            //debug print
+            print("In collectionView function ,'Did select Item At' if statement")
+            
+            let selectItem = [collectionViewPhoto[indexPath.row]]
+            let image = collectionViewPhoto[indexPath.row].image as! Data
+            cell.imageViewCell.image = UIImage(data: image)
+            
+            // Check photosDeleted Array for empty after removing cell photos & change the Button Title
+            photosDeleted = photosDeleted.filter{selectItem.contains($0)}
+            if photosDeleted.isEmpty {
+                getMorePhotosorDeletePhotos.setTitle("Get New Images", for: .normal)
+            }
+            
+
+            
+        }
+        else {
+            //debug print
+            print("In collectionView function ,'Did select Item At' else statement")
+
+            
+            // User Taps the image , default button text should be "Delete Selected Images"
+            getMorePhotosorDeletePhotos.setTitle("Delete Selected Photos", for: .normal)
+            
+            photosDeleted.append(collectionViewPhoto[indexPath.row])
+            
+
+        }
+        
+        
+    } // func collectionView didSelectItemAt ends
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     // MARK: Show Alert Methods
     
     func showAlert(message: String) {
