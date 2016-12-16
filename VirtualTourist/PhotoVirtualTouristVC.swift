@@ -40,7 +40,7 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
     var photosDeleted : [Photo] = []
     
     //Default View Active is set false , Set to true in View Did Load. Easier to track view Active when going in Background or View will Disappear.
-    var photoViewActive : Bool = false
+    var isPhotoViewActive : Bool = false
     
     
     //MARK: View DidLoad
@@ -58,7 +58,7 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         
         
         // View Loaded so Active
-        photoViewActive = true
+        isPhotoViewActive = true
         
         // show the user selected photos
         selectedPinPhotos = Array(mapSegueSelectedPin!.photos!) as! [Photo]
@@ -133,7 +133,7 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        photoViewActive = false
+        isPhotoViewActive = false
         
         // Save the context core data the pin
         mapSegueSelectedPin.photos = Set(self.selectedPinPhotos) as NSSet
@@ -149,7 +149,7 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
     
     //MARK: Collection View Delegate & DataSource
     
-    //MARK: viewDidLayoutSubviews
+    // viewDidLayoutSubviews
     /*
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -209,6 +209,10 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             // User Taps the image , default button text should be "Delete Selected Images"
             getMorePhotosorDeletePhotos.setTitle("Delete Selected Photos", for: .normal)
             
+            // Color change
+            cell.imageViewCell.image = cell.imageViewCell.image?.withRenderingMode(.alwaysTemplate)
+            cell.imageViewCell.tintColor = UIColor.brown
+            
             photosDeleted.append(collectionViewPhoto[indexPath.row])
             
 
@@ -216,6 +220,99 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         
         
     } // func collectionView didSelectItemAt ends
+    
+    
+    
+    func imageLoadFromCoreOrFlickr (indexPath : IndexPath , cell : PhotoCellVT ) {
+        
+        // Clear out the imageView of Photo Cell Collection first
+        cell.imageViewCell.image = nil
+        
+        
+        // Check whether Core Data Image data present or we have to retrieve from Flickr Api 
+        
+        // First run or Deleted images. Retrieve data from URL Flickr
+        if collectionViewPhoto[indexPath.row].image == nil {
+            
+            
+            // Start Animation of loading activity
+            
+            cell.activityIndicatorInCell.startAnimating()
+            
+            DispatchQueue.global(qos: .userInitiated).sync {
+                
+                
+                // Run this on same Thread
+                CoreDataStack.sharedInstance().persistentContainer.viewContext.perform {
+                    
+                    guard let imageDataFlickr = FlickrParseClient.sharedInstance().getImageDataFlickrURL(urlString: self.collectionViewPhoto[indexPath.row].url!) else {
+                        print("error in getting image Data from flickr")
+                        return
+                    }
+                    
+                    for photo in self.selectedPinPhotos {
+                        if photo.index == self.collectionViewPhoto[indexPath.row].index {
+                            CoreDataStack.sharedInstance().persistentContainer.viewContext.perform {
+                                photo.image = imageDataFlickr as NSData
+                                cell.activityIndicatorInCell.stopAnimating()
+                                cell.imageViewCell.image = UIImage(data: imageDataFlickr)
+                            } // Context 2nd  End Function
+                        } // if photo index end declaration
+                    } // For loop end
+                    
+                    
+                    // Save context Method Call
+                    CoreDataStack.sharedInstance().persistentContainer.viewContext.perform {
+                        CoreDataStack.sharedInstance().saveContext()
+                    }
+                } // context perform 1st end
+
+            } // DispatchQueue.global(qos: .userInitiated).sync End
+            
+            
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
+            
+            
+                if self.isPhotoViewActive {
+                    print("Function check whether view active or not -> True")
+                }
+            
+            }) // DispatchQueue.main.asyncAfter(deadline: .now() end
+            
+            
+            
+            
+
+            
+        }
+        // In Core Data Objects
+        else {
+            let corePhotoData = UIImage(data: collectionViewPhoto[indexPath.row].image as! Data)
+            
+            // Stop Animation of loading activity
+            
+            cell.activityIndicatorInCell.stopAnimating()
+            
+            // Display the Photo Image Data on Photo Cell VT image
+            
+            cell.imageViewCell.image = corePhotoData
+            
+            
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 
@@ -232,3 +329,4 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
     }
     
 }
+
