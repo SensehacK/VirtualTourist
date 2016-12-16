@@ -17,7 +17,7 @@ struct FlickrConstants {
     
     
     
-    static let APIScheme = "https:"
+    static let APIScheme = "https"
     static let APIHost = "api.flickr.com"
     static let APIPath = "/services/rest"
     
