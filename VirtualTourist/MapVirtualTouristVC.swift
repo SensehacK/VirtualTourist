@@ -103,6 +103,10 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
     //MARK: Incomplete
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
+        
+        // Code Reviewer SUGGESTION (I suggest deselecting the pin here, because if we move back to the map view after opening the photo album the specific pin cannot be selected again:)
+        mapView.deselectAnnotation(view.annotation, animated: true)
+        
         // Debug Print
         print(" In Function Map View Delegate did select")
         
@@ -158,6 +162,16 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
             
             if resultsPins.count > 0 {
                 userSelectedPin = resultsPins.first
+                
+                // Code Reviewer Suggestion (When a pin is selected the photo album should open:)
+                let detailController = self.storyboard!.instantiateViewController(withIdentifier: "PhotoVirtualTouristVC") as! PhotoVirtualTouristVC
+                detailController.mapSegueSelectedPin = userSelectedPin
+              // Perform the transition in Main thread , as UI should be done.
+                DispatchQueue.main.async {
+                    self.navigationController!.pushViewController(detailController, animated: true)
+                }
+                
+                
             } else {
                 print("Unable to find any Pins from Core data")
             }
