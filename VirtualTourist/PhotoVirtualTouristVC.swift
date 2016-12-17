@@ -272,6 +272,7 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FlickrPhotoCollectionCell", for: indexPath) as! PhotoCellVT
         
+        imageLoadFromCoreOrFlickr(indexPath: indexPath, cell: cell)
         return cell
         
     }
