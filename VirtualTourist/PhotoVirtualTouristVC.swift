@@ -173,13 +173,13 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             
             var storedPhotos :[Photo] = []
             
-            // if photos of selected pin retrieve are less than 21 then return all photos of Selected Pin to the collectionView Photo display grid
-            if selectedPinPhotos.count <= 21 {
+            // if photos of selected pin retrieve are less than 20 then return all photos of Selected Pin to the collectionView Photo display grid
+            if selectedPinPhotos.count <= 20 {
                 collectionViewPhoto = selectedPinPhotos
             }
                 // else randomly select photos from 21 using arc4random_uniform
             else {
-                for _ in 1...21 {
+                for _ in 1...20 {
                     
                     let arcRandomIndex = Int(arc4random_uniform(UInt32(selectedPinPhotos.count)))
                     storedPhotos.append(selectedPinPhotos[arcRandomIndex])
