@@ -162,6 +162,7 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
                 
             }
             else {
+                
                 showAlert(message: "No Photos to get from this pin")
             }
             
@@ -291,7 +292,11 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             print("In collectionView function ,'Did select Item At' if statement")
             
             let selectItem = [collectionViewPhoto[indexPath.row]]
+            //Debug Print
+            print(selectItem)
             let image = collectionViewPhoto[indexPath.row].image as! Data
+            //Debug Print
+            print(image)
             cell.imageViewCell.image = UIImage(data: image)
             
             // Check photosDeleted Array for empty after removing cell photos & change the Button Title
@@ -306,7 +311,7 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         else {
             //debug print
             print("In collectionView function ,'Did select Item At' else statement")
-
+            print(collectionViewPhoto[indexPath.row])
             
             // User Taps the image , default button text should be "Delete Selected Images"
             getMorePhotosorDeletePhotos.setTitle("Delete Selected Photos", for: .normal)
