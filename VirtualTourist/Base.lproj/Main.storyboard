@@ -68,7 +68,7 @@
                             </collectionView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-MY-ahZ">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="119" id="jOa-Hl-NNJ"/>
+                                    <constraint firstAttribute="height" constant="130" id="jOa-Hl-NNJ"/>
                                 </constraints>
                             </mapView>
                         </subviews>
@@ -99,7 +99,7 @@
                             <constraint firstItem="DcN-vP-fah" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="wXG-cS-p9W"/>
                             <constraint firstItem="DcN-vP-fah" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="xYq-u4-8dG"/>
                             <constraint firstAttribute="trailing" secondItem="jh3-MY-ahZ" secondAttribute="trailing" id="yJv-Zw-WUt"/>
-                            <constraint firstItem="zex-kJ-K6N" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="46" id="zEc-vE-4lr"/>
+                            <constraint firstItem="zex-kJ-K6N" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="62" id="zEc-vE-4lr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Flickr Photo Collection" id="qhQ-5b-7yi"/>
