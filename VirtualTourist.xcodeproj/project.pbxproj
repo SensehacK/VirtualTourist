@@ -12,7 +12,6 @@
 		FB3B26B11DFEF9AE001A214F /* Pin+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3B26AD1DFEF9AE001A214F /* Pin+CoreDataClass.swift */; };
 		FB3B26B21DFEF9AE001A214F /* Pin+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3B26AE1DFEF9AE001A214F /* Pin+CoreDataProperties.swift */; };
 		FB53C55A1DF9895D004A4965 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB53C5591DF9895D004A4965 /* AppDelegate.swift */; };
-		FB53C55C1DF9895D004A4965 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB53C55B1DF9895D004A4965 /* ViewController.swift */; };
 		FB53C55F1DF9895D004A4965 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB53C55D1DF9895D004A4965 /* Main.storyboard */; };
 		FB53C5611DF9895D004A4965 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB53C5601DF9895D004A4965 /* Assets.xcassets */; };
 		FB53C5641DF9895D004A4965 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB53C5621DF9895D004A4965 /* LaunchScreen.storyboard */; };
@@ -52,7 +51,6 @@
 		FB3B26AE1DFEF9AE001A214F /* Pin+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pin+CoreDataProperties.swift"; path = "../Pin+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FB53C5561DF9895D004A4965 /* VirtualTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB53C5591DF9895D004A4965 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FB53C55B1DF9895D004A4965 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FB53C55E1DF9895D004A4965 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB53C5601DF9895D004A4965 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB53C5631DF9895D004A4965 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				FB53C5591DF9895D004A4965 /* AppDelegate.swift */,
-				FB53C55B1DF9895D004A4965 /* ViewController.swift */,
 				FBB271431DFD33310073C9B4 /* Flickr */,
 				FB53C5881DF989FF004A4965 /* View */,
 				FB53C5871DF989F7004A4965 /* Model */,
@@ -347,7 +344,6 @@
 				FB3B26B01DFEF9AE001A214F /* Photo+CoreDataProperties.swift in Sources */,
 				FB3B26B11DFEF9AE001A214F /* Pin+CoreDataClass.swift in Sources */,
 				FB3B26B21DFEF9AE001A214F /* Pin+CoreDataProperties.swift in Sources */,
-				FB53C55C1DF9895D004A4965 /* ViewController.swift in Sources */,
 				FB53C55A1DF9895D004A4965 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

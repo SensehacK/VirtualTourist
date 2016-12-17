@@ -336,9 +336,12 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         if collectionViewPhoto[indexPath.row].image == nil {
             
             
+            //Code Reviewer Suggestion (Starting and stopping the activity indicator should perform in the main queue:)
             // Start Animation of loading activity
-            
+            DispatchQueue.main.async{
             cell.activityIndicatorInCell.startAnimating()
+            }
+            
             
             DispatchQueue.global(qos: .userInitiated).sync {
                 
@@ -385,8 +388,12 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         else {
             let corePhotoData = UIImage(data: collectionViewPhoto[indexPath.row].image as! Data)
             
-            // Stop Animation of loading activity
-            cell.activityIndicatorInCell.stopAnimating()
+            
+            //Code Reviewer Suggestion (Starting and stopping the activity indicator should perform in the main queue:)
+             // Stop Animation of loading activity
+                DispatchQueue.main.async{
+                cell.activityIndicatorInCell.stopAnimating()
+            }
             
             // Display the Photo Image Data on Photo Cell VT image
             cell.imageViewCell.image = corePhotoData
