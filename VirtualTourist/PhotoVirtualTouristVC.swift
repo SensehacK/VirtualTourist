@@ -162,8 +162,10 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
                 
             }
             else {
-                
-                showAlert(message: "No Photos to get from this pin")
+                 //Code Reviewer Suggestion (Starting and stopping the UI activity should perform in the main queue:)
+                DispatchQueue.main.async{
+                self.showAlert(message: "No Photos to get from this pin")
+                }
             }
             
             
@@ -224,8 +226,11 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             }
             
             let photosDeletedCount = photosDeleted.count
+            //Code Reviewer Suggestion (Starting and stopping the UI activity should perform in the main queue:)
+            DispatchQueue.main.async{
+               self.showAlert(message: "\(photosDeletedCount) photos were deleted ")
+            }
             
-            showAlert(message: "\(photosDeletedCount) photos were deleted ")
             
             // Small changes after Deletion
             
