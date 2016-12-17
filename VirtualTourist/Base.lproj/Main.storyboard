@@ -26,8 +26,7 @@
                                     <action selector="getNewPhotosOrDelete:" destination="Q6C-Vn-DjT" eventType="touchUpInside" id="xXk-L3-rTX"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KAI-A7-ZfX">
-                                <frame key="frameInset" width="1000" height="1000"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KAI-A7-ZfX">
                                 <color key="backgroundColor" red="1" green="0.85198447040000003" blue="0.76397017710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="375" id="119-Js-jg4"/>
@@ -67,10 +66,9 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-MY-ahZ">
-                                <frame key="frameInset" width="1000" height="1000"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-MY-ahZ">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="127" id="jOa-Hl-NNJ"/>
+                                    <constraint firstAttribute="height" constant="119" id="jOa-Hl-NNJ"/>
                                 </constraints>
                             </mapView>
                         </subviews>
@@ -82,21 +80,21 @@
                             <constraint firstItem="jh3-MY-ahZ" firstAttribute="top" secondItem="jXm-GS-h4v" secondAttribute="bottom" id="Mar-1S-05X"/>
                             <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="8" id="Ng3-cJ-c45"/>
                             <constraint firstItem="zex-kJ-K6N" firstAttribute="top" secondItem="DcN-vP-fah" secondAttribute="bottom" constant="8" id="Qmy-w7-lLr"/>
-                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="-6" id="Rf7-pF-nrr"/>
+                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="Rf7-pF-nrr"/>
                             <constraint firstItem="KAI-A7-ZfX" firstAttribute="trailing" secondItem="BrB-9a-Y2p" secondAttribute="trailingMargin" constant="16" id="Taq-kz-xN3"/>
                             <constraint firstAttribute="trailing" secondItem="DcN-vP-fah" secondAttribute="trailing" id="Xcj-9y-8Dt"/>
-                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="-6" id="dbq-sx-EwF"/>
+                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="dbq-sx-EwF"/>
                             <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="8" id="ezW-ZX-6Lr"/>
                             <constraint firstAttribute="trailing" secondItem="jh3-MY-ahZ" secondAttribute="trailing" id="fhq-Ah-YPP"/>
                             <constraint firstItem="jh3-MY-ahZ" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="iXt-pe-H5s"/>
                             <constraint firstAttribute="trailing" secondItem="jh3-MY-ahZ" secondAttribute="trailing" id="ila-l3-rbo"/>
-                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="-6" id="lHB-NL-doJ"/>
+                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="lHB-NL-doJ"/>
                             <constraint firstAttribute="trailing" secondItem="DcN-vP-fah" secondAttribute="trailing" id="nw1-Ky-fVg"/>
                             <constraint firstItem="jh3-MY-ahZ" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="pQn-pd-exT"/>
                             <constraint firstItem="jh3-MY-ahZ" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="rHl-fQ-6Oc"/>
                             <constraint firstItem="KAI-A7-ZfX" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="rUb-iO-Y2g"/>
                             <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="8" id="rxl-wR-4il"/>
-                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="-6" id="sHx-XS-DGk"/>
+                            <constraint firstItem="KAI-A7-ZfX" firstAttribute="top" secondItem="jh3-MY-ahZ" secondAttribute="bottom" constant="8" id="sHx-XS-DGk"/>
                             <constraint firstItem="DcN-vP-fah" firstAttribute="top" secondItem="KAI-A7-ZfX" secondAttribute="bottom" constant="8" id="txz-fr-qLu"/>
                             <constraint firstItem="DcN-vP-fah" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="wXG-cS-p9W"/>
                             <constraint firstItem="DcN-vP-fah" firstAttribute="leading" secondItem="BrB-9a-Y2p" secondAttribute="leading" id="xYq-u4-8dG"/>

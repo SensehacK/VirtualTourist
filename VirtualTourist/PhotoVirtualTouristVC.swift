@@ -311,8 +311,8 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             getMorePhotosorDeletePhotos.setTitle("Delete Selected Photos", for: .normal)
             
             // Color change
-            cell.imageViewCell.image = cell.imageViewCell.image?.withRenderingMode(.alwaysTemplate)
-            cell.imageViewCell.tintColor = UIColor.brown
+            //cell.imageViewCell.image = cell.imageViewCell.image?.withRenderingMode(.alwaysTemplate)
+            //cell.imageViewCell.tintColor = UIColor.brown
             
             photosDeleted.append(collectionViewPhoto[indexPath.row])
             
