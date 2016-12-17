@@ -36,6 +36,9 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
         // Calls to delegate Self
         MapVTMapView.delegate = self
         
+        //Change text of deletionLabel
+        deletionLabel.text = "Hold press to drop Pin or Delete Existing Pin"
+        
         //Step 1 Get user core data stored Pins
         getStoredPins()
         
@@ -80,8 +83,10 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
         if isEditingMode {
             isEditingMode = false
             editButton.title = "Edit"
-            deletionLabel.isHidden = true
+            //deletionLabel.isHidden = true
             
+            // After deleting again give user information
+            deletionLabel.text = "Create new Pin or Select Pin for Photos"
             
             // Save after user pressed "Done" with the Pins
             CoreDataStack.sharedInstance().saveContext()
@@ -94,7 +99,7 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
             isEditingMode = true
             editButton.title = "Done"
             deletionLabel.isHidden = false
-            
+            deletionLabel.text = "Touch the pins to Delete"
         }
         
         
@@ -197,6 +202,9 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
             
            // MKAnnotation  http://stackoverflow.com/a/7213540/5177704
             MapVTMapView.addAnnotation(newPin)
+            
+            // Also update the label 
+            deletionLabel.text = "Select the Pin for Photos"
             
             // Get Flickr Photos for that Pin
             FlickrParseClient.sharedInstance().parsePhotoURLFromFlickrJSON(pin: newPin, managedcontext: CoreDataStack.sharedInstance().persistentContainer.viewContext)

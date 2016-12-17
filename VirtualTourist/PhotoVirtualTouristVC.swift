@@ -393,7 +393,7 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             
             
                 if self.isPhotoViewActive {
-                    print("Function check whether view active or not -> True")
+                    print("Function check whether view active or not -> Active: True")
                 }
             
             }) // DispatchQueue.main.asyncAfter(deadline: .now() end
