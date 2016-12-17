@@ -10,7 +10,7 @@
         <!--Flickr Photo Collection-->
         <scene sceneID="4KT-4v-1Ax">
             <objects>
-                <viewController id="Q6C-Vn-DjT" customClass="PhotoVirtualTouristVC" customModule="VirtualTourist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoVirtualTouristVC" id="Q6C-Vn-DjT" customClass="PhotoVirtualTouristVC" customModule="VirtualTourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jXm-GS-h4v"/>
                         <viewControllerLayoutGuide type="bottom" id="zex-kJ-K6N"/>
