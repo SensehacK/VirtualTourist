@@ -338,24 +338,6 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         
     } // func collectionView didSelectItemAt ends
     
-    func downloadImage( imagePath:String, completionHandler: @escaping (_ imageData: NSData?, _ errorString: String?) -> Void){
-        let session = URLSession.shared
-        let imgURL = NSURL(string: imagePath)
-        let request: NSURLRequest = NSURLRequest(url: imgURL! as URL)
-        
-        let task = session.dataTask(with: request as URLRequest) {data, response, downloadError in
-            
-            if let _ = downloadError {
-                completionHandler(nil, "Could not download image \(imagePath)")
-            } else {
-                
-                completionHandler(data as NSData?, nil)
-            }
-        }
-        
-        task.resume()
-    }
-    
     
     func imageLoadFromCoreOrFlickr (indexPath : IndexPath , cell : PhotoCellVT ) {
         
@@ -378,7 +360,8 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
                     
                     
                     // Reviewer Method Called from here FlickrParseClient.sharedInstance().downloadImage
-                    downloadImage(imagePath: self.collectionViewPhoto[indexPath.row].url!, completionHandler: { (imageData, nil) in
+                    //Added network code to network swift file. Different locations differently stored.
+                    FlickrParseClient.sharedInstance().downloadImage(imagePath: self.collectionViewPhoto[indexPath.row].url!, completionHandler: { (imageData, nil) in
                         
                         CoreDataStack.sharedInstance().persistentContainer.viewContext.perform {
                             photo.image = imageData! as NSData
