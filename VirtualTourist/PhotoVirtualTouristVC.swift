@@ -338,9 +338,82 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         
     } // func collectionView didSelectItemAt ends
     
+    func downloadImage( imagePath:String, completionHandler: @escaping (_ imageData: NSData?, _ errorString: String?) -> Void){
+        let session = URLSession.shared
+        let imgURL = NSURL(string: imagePath)
+        let request: NSURLRequest = NSURLRequest(url: imgURL! as URL)
+        
+        let task = session.dataTask(with: request as URLRequest) {data, response, downloadError in
+            
+            if let _ = downloadError {
+                completionHandler(nil, "Could not download image \(imagePath)")
+            } else {
+                
+                completionHandler(data as NSData?, nil)
+            }
+        }
+        
+        task.resume()
+    }
     
     
     func imageLoadFromCoreOrFlickr (indexPath : IndexPath , cell : PhotoCellVT ) {
+        
+        // Clear out the imageView of Photo Cell Collection first
+        cell.imageViewCell.image = nil
+        
+        
+        // Check whether Core Data Image data present or we have to retrieve from Flickr Api
+        
+        // First run or Deleted images. Retrieve data from URL Flickr
+        if collectionViewPhoto[indexPath.row].image == nil {
+            
+            //Code Reviewer Suggestion (Starting and stopping the activity indicator should perform in the main queue:)
+            // Start Animation of loading activity
+            DispatchQueue.main.async{
+                cell.activityIndicatorInCell.startAnimating()
+            }
+            for photo in self.selectedPinPhotos {
+                if photo.index == self.collectionViewPhoto[indexPath.row].index {
+                    
+                    
+                    // Reviewer Method Called from here FlickrParseClient.sharedInstance().downloadImage
+                    downloadImage(imagePath: self.collectionViewPhoto[indexPath.row].url!, completionHandler: { (imageData, nil) in
+                        
+                        CoreDataStack.sharedInstance().persistentContainer.viewContext.perform {
+                            photo.image = imageData! as NSData
+                            DispatchQueue.main.async{
+                                cell.activityIndicatorInCell.stopAnimating()
+                                cell.imageViewCell.image = UIImage(data: imageData as! Data)
+                            }
+                        } // Context 2nd  End Function
+                    })
+                } // if photo index end declaration
+            } // For loop end
+            // Save context Method Call
+            CoreDataStack.sharedInstance().persistentContainer.viewContext.perform {
+                CoreDataStack.sharedInstance().saveContext()
+            }
+        }
+            // In Core Data Objects
+        else {
+            let corePhotoData = UIImage(data: collectionViewPhoto[indexPath.row].image as! Data)
+            
+            
+            //Code Reviewer Suggestion (Starting and stopping the activity indicator should perform in the main queue:)
+            // Stop Animation of loading activity
+            DispatchQueue.main.async{
+                cell.activityIndicatorInCell.stopAnimating()
+            }
+            
+            // Display the Photo Image Data on Photo Cell VT image
+            cell.imageViewCell.image = corePhotoData
+            
+        }
+        
+    }
+    
+    func image2LoadFromCoreOrFlickr (indexPath : IndexPath , cell : PhotoCellVT ) {
         
         // Clear out the imageView of Photo Cell Collection first
         cell.imageViewCell.image = nil

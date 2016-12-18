@@ -155,6 +155,8 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
                 CoreDataStack.sharedInstance().persistentContainer.viewContext.delete(resultsPins.first!)
                 print("Pin deleted from Core Data")
                 
+                // Code Review Suggestion.  Always save context after any updates or make auto save every 1 min approx.
+                CoreDataStack.sharedInstance().saveContext()
             }
             else {
                 print("Couldn't fetch pins to delete")
