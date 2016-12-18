@@ -41,6 +41,9 @@ Updated the App code with running simulatenously downloading images to the colle
 
 Day 8.
 
+5th Review : 
+https://review.udacity.com/#!/reviews/301790
+Small Change for Networking code to be in Networking file.
 
 
 Practise will surely improve my skills.
