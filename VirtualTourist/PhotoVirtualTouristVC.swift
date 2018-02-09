@@ -21,10 +21,6 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var PhotoVTCollection: UICollectionView!
     @IBOutlet weak var getMorePhotosorDeletePhotos: UIButton!
     
-    
-    
-    
-    
     //Variables Declaration
     
     // Selected User Pin passed from Map View controller
@@ -56,7 +52,6 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         //  adding Pin to that region
         PhotoVTMap.addAnnotation(mapSegueSelectedPin)
         
-        
         // View Loaded so Active
         isPhotoViewActive = true
         
@@ -65,7 +60,6 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         
         //Random Photo number generated from selected Pin Photos
         randomPhoto = Int(arc4random_uniform(UInt32(selectedPinPhotos.count)))
-        
         
         // check Photos boolean property whether it is located in Collection View "isInAlbum" Default is False when they are been created.
         
@@ -79,13 +73,10 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         
         collectionViewPhoto = albumPhotos
         
-        
-        
-        
+
         // Check the CollectionView Photos whether they are empty ( new Pin ) or old Pin Photos from Core data boolean property 
         
         if collectionViewPhoto.isEmpty {
-            
             var storedPhotos :[Photo] = []
             
             // if photos of selected pin retrieve are less than 20 then return all photos of Selected Pin to the collectionView Photo display grid
@@ -118,7 +109,6 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         }
         
         
-        
         // Set the selectedPinPhotos managed Context into Pin "photos" relationship.
         mapSegueSelectedPin.photos = Set(selectedPinPhotos) as NSSet
         
@@ -127,11 +117,8 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         
         PhotoVTCollection.dataSource = self
         PhotoVTCollection.delegate   = self
-        
-        
-        
+         
     } // View Did Load func ends
-    
     
     
     //MARK: View Disappear
@@ -146,11 +133,9 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
     }
     
     
-    
     @IBAction func getNewPhotosOrDelete(_ sender: AnyObject) {
         //Check whether Photos to be deleted or not
-        
-        
+
         if photosDeleted.isEmpty {
             //New collection Button , No photos to be deleted
             
@@ -163,8 +148,7 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             
             photosDeleted = collectionViewPhoto
             if selectedPinPhotos.count > 0 {
-                getNewPhotosOrDelete(sender)
-                
+                getNewPhotosOrDelete(sender)  
             }
             else {
                  //Code Reviewer Suggestion (Starting and stopping the UI activity should perform in the main queue:)
@@ -172,12 +156,10 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
                 self.showAlert(message: "No Photos to get from this pin")
                 }
             }
-            
-            
+
             // Get random photos from remaining Photos Pins
             
             var storedPhotos :[Photo] = []
-            
             // if photos of selected pin retrieve are less than 20 then return all photos of Selected Pin to the collectionView Photo display grid
             if selectedPinPhotos.count <= 20 {
                 collectionViewPhoto = selectedPinPhotos
@@ -216,7 +198,6 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             // Update the random variable with updated photos remaining
             randomPhoto = Int(arc4random_uniform(UInt32(selectedPinPhotos.count)))
             
-            
             // delete from Core data
             for p in photosDeleted {
                CoreDataStack.sharedInstance().persistentContainer.viewContext.delete(p)
@@ -247,18 +228,12 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             
             // Reload data 
             PhotoVTCollection.reloadData()
-            
-            
-            
+             
         }
-        
-        
+
     }
     
-    
-    
-    
-    
+
     //MARK: Collection View Delegate & DataSource
     
     // viewDidLayoutSubviews
@@ -289,11 +264,9 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
     }
     
     
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! PhotoCellVT
-        
-        
+
         //debug print 
         print("In collectionView function ,'Did select Item At'")
         if photosDeleted.contains(collectionViewPhoto[indexPath.row]) {
@@ -314,9 +287,7 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             if photosDeleted.isEmpty {
                 getMorePhotosorDeletePhotos.setTitle("Get New Images", for: .normal)
             }
-            
 
-            
         }
         else {
             //debug print
@@ -331,8 +302,6 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             //cell.imageViewCell.tintColor = UIColor.brown
             
             photosDeleted.append(collectionViewPhoto[indexPath.row])
-            
-
         }
         
         
@@ -343,8 +312,6 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         
         // Clear out the imageView of Photo Cell Collection first
         cell.imageViewCell.image = nil
-        
-        
         // Check whether Core Data Image data present or we have to retrieve from Flickr Api
         
         // First run or Deleted images. Retrieve data from URL Flickr
@@ -357,8 +324,6 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             }
             for photo in self.selectedPinPhotos {
                 if photo.index == self.collectionViewPhoto[indexPath.row].index {
-                    
-                    
                     // Reviewer Method Called from here FlickrParseClient.sharedInstance().downloadImage
                     //Added network code to network swift file. Different locations differently stored.
                     FlickrParseClient.sharedInstance().downloadImage(imagePath: self.collectionViewPhoto[indexPath.row].url!, completionHandler: { (imageData, nil) in
@@ -381,8 +346,7 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             // In Core Data Objects
         else {
             let corePhotoData = UIImage(data: collectionViewPhoto[indexPath.row].image as! Data)
-            
-            
+
             //Code Reviewer Suggestion (Starting and stopping the activity indicator should perform in the main queue:)
             // Stop Animation of loading activity
             DispatchQueue.main.async{
@@ -391,7 +355,6 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             
             // Display the Photo Image Data on Photo Cell VT image
             cell.imageViewCell.image = corePhotoData
-            
         }
         
     }
@@ -400,24 +363,19 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         
         // Clear out the imageView of Photo Cell Collection first
         cell.imageViewCell.image = nil
-        
-        
         // Check whether Core Data Image data present or we have to retrieve from Flickr Api 
         
         // First run or Deleted images. Retrieve data from URL Flickr
         if collectionViewPhoto[indexPath.row].image == nil {
-            
-            
+
             //Code Reviewer Suggestion (Starting and stopping the activity indicator should perform in the main queue:)
             // Start Animation of loading activity
             DispatchQueue.main.async{
             cell.activityIndicatorInCell.startAnimating()
             }
-            
-            
+
             DispatchQueue.global(qos: .userInitiated).sync {
-                
-                
+
                 // Run this on same Thread
                 CoreDataStack.sharedInstance().persistentContainer.viewContext.perform {
                     
@@ -446,21 +404,18 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
             } // DispatchQueue.global(qos: .userInitiated).sync End
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
-            
-            
+
                 if self.isPhotoViewActive {
                     print("Function check whether view active or not -> Active: True")
                 }
             
             }) // DispatchQueue.main.asyncAfter(deadline: .now() end
-            
-    
+
         }
         // In Core Data Objects
         else {
             let corePhotoData = UIImage(data: collectionViewPhoto[indexPath.row].image as! Data)
-            
-            
+
             //Code Reviewer Suggestion (Starting and stopping the activity indicator should perform in the main queue:)
              // Stop Animation of loading activity
                 DispatchQueue.main.async{
@@ -473,17 +428,6 @@ class PhotoVirtualTouristVC : UIViewController, UICollectionViewDataSource, UICo
         }
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 
     // MARK: Show Alert Methods

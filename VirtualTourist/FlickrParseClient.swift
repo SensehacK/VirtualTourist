@@ -19,7 +19,6 @@ class FlickrParseClient {
     }
 
     
-    
     // Reference : Used from "Flick Finder" Jarod Udacity, Created by Jarrod Parkes on 11/5/15.
      func bboxString( latitude : Double , longitude : Double ) -> String {
         
@@ -67,15 +66,11 @@ class FlickrParseClient {
             return url
         }
         
-        
         let request = URLRequest(url: urlrequested)
         return request
         
-        
     }
 
-    
-    
     
     // function for initializing session task.
     func initTask(request : URLRequest , completionHandlerForTask : @escaping (_ result : AnyObject? , _ error : Error?)->Void)-> URLSessionDataTask {
@@ -122,18 +117,7 @@ class FlickrParseClient {
          // Gets Non void error for returning task
         return task
         
-        
     }
     
-    
-    
-    
-    
 
-    
-    
-    
-    
-    
-    
 }

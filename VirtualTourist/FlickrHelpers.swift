@@ -16,8 +16,7 @@ extension FlickrParseClient {
     
     
     func parsePhotoURLFromFlickrJSON(pin selectedPin : Pin, managedcontext coreDataContext:NSManagedObjectContext ){
-        
-        
+
         // Parameters adding
         
         let flickrParameters : [String : String?] = [
@@ -32,7 +31,6 @@ extension FlickrParseClient {
         ]
         
       // Request Setup
-        
         
         let getRequestSetup = FlickrParseClient.sharedInstance().getBuildURL(parameters: flickrParameters as [String : AnyObject])
         
@@ -83,7 +81,7 @@ extension FlickrParseClient {
                 print("Error in InitTask Guard Statement")
                 return
             }
-            // Status code msgs
+            // Status code messages
             guard let statusCodes = (response as? HTTPURLResponse)?.statusCode , statusCodes >= 200 && statusCodes <= 299 else {
                 print("Wrong status codes returned")
                 return
@@ -97,7 +95,7 @@ extension FlickrParseClient {
                
                 
             } catch {
-                print(" Catched Error in JSON serialization Json Object creation")
+                print(" Catch Error in JSON serialization Json Object creation")
                 
             }
             
@@ -110,11 +108,11 @@ extension FlickrParseClient {
             }
             
             guard photosArray.count > 0 else {
-                print("photosarray is empty.")
+                print("PhotosArray is empty.")
                 return
             }
             
-            //Create the photoarraycount variable for easily traversing through the array index & print it.
+            //Create the PhotoArrayCount variable for easily traversing through the array index & print it.
             let photosArrayCount = photosArray.count-1
             print(photosArrayCount)
             
@@ -142,7 +140,7 @@ extension FlickrParseClient {
                     // Save the  photoindex
                     photo.index = photoindex + 1
                     
-                    // Make Bool isinAlbum = false
+                    // Make Bool isInAlbum = false
                     photo.isInAlbum = false
                     
                     // Save photo for selected pin
@@ -150,20 +148,14 @@ extension FlickrParseClient {
                 }
                 
             }
-            
-            
-           // end of the photo passing loop creation
-          print("PhotoIndex Completed parsing through PhotoArraycount")
 
-            
-        
+           // end of the photo passing loop creation
+          print("PhotoIndex Completed parsing through PhotoArrayCount")
+
         } // End of Task2
-        
-        
-        
+
         task2.resume()
-        
-        
+             
     } // End of Function parsePhotoURLFromFlickrJSON
     
     func downloadImage( imagePath:String, completionHandler: @escaping (_ imageData: NSData?, _ errorString: String?) -> Void){
@@ -185,7 +177,6 @@ extension FlickrParseClient {
     }
 
 
-    
     //Convert Flickr URLs to  Image Data.
     func getImageDataFlickrURL (urlString : String) -> Data? {
         
