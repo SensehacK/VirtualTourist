@@ -15,5 +15,4 @@ class PhotoCellVT : UICollectionViewCell {
     
     @IBOutlet weak var activityIndicatorInCell: UIActivityIndicatorView!
     
-    
 }

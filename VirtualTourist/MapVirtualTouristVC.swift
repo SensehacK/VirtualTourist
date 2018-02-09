@@ -127,7 +127,7 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
         let upperBLongitude  = (view.annotation?.coordinate.longitude)! + precision
         
         //NS Predicate Syntax for getting the pins on Latitude & longitude respectively
-        // Took help for NSPRedicate Syntax from http://nshipster.com/nspredicate/ , https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html
+        // Took help for NSPredicate Syntax from http://nshipster.com/nspredicate/ , https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html
         mapPinFetch.predicate = NSPredicate(format: "(%K BETWEEN {\(lowerBLatitude) , \(upperBLatitude)}) AND (%K BETWEEN {\(lowerBLongitude), \(upperBLongitude) })", #keyPath(Pin.latitude) , #keyPath(Pin.longitude) )
         
         var resultsPins : [Pin] = []
@@ -135,13 +135,13 @@ class MapVirtualTouristVC : UIViewController , MKMapViewDelegate
         do {
           resultsPins =  try CoreDataStack.sharedInstance().persistentContainer.viewContext.fetch(mapPinFetch)
         } catch {
-            print("Couldn't get the results Pins via NSPRedicate")
+            print("Couldn't get the results Pins via NSPredicate")
         }
         
         
         
         if isEditingMode {
-            // Run the results Pins Variable after fetching via NSPRedicate
+            // Run the results Pins Variable after fetching via NSPredicate
             
             // Edit Button has pressed & IBAction set bool "isEditingMode" = true
             if resultsPins.count > 0 {
